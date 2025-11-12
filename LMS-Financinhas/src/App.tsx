@@ -1,16 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import HomePage from './pages/HomeScreen/HomeScreen'
-import LoginScreen from './pages/LoginScreen/LoginScreen'
+import React from 'react'
+import AppRoutes from './routes'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginScreen />} />
-      </Routes>
-    </Router>
+      <AppRoutes />
   )
 }
 
