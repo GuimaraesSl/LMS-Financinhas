@@ -3,6 +3,7 @@ import React from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import LoginScreen from '../pages/LoginScreen/LoginScreen'
+import SelectTeamScreen from '../pages/SelectTeam/SelectTeamScreen'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -13,6 +14,9 @@ const AppRoutes: React.FC = () => {
 
          {/* Rota para a tela de Login */}
         <Route path="/login" element={<LoginScreen />} />
+
+        {/* Rota para a tela de selecionar time */}
+        <Route path="/select-team" element={<SelectTeamScreen />} />
       </Routes>
     </HashRouter>
   )
