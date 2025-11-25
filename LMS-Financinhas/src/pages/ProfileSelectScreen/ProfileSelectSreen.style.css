@@ -50,8 +50,8 @@
     color: #00570A;
     border: clamp(3px, 1.2vw, 5px) solid #00570A;
     border-radius: 20px;
-    width: clamp(250px, 85%, 400px);
-    font-family: 'Fredoka One', sans-serif;
+    width: clamp(250px, 85%, 500px);
+    font-family: 'Fredoka', sans-serif;
     font-size: clamp(18px, 4vw, 30px);
     font-weight: bold;
     cursor: pointer;
