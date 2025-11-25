@@ -3,6 +3,7 @@ import React from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import LoginScreen from '../pages/LoginScreen/LoginScreen'
+import EnterRoomScreen from '../pages/EnterRoomScreen/EnterRoomScreen'
 import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen'
 
 const AppRoutes: React.FC = () => {
@@ -12,14 +13,14 @@ const AppRoutes: React.FC = () => {
         {/* Rota para a tela inicial */}
         <Route path="/" element={<HomePage />} />
 
-         {/* Rota para a tela de Login */}
+        {/* Rota para a tela de Login */}
         <Route path="/login" element={<LoginScreen />} />
 
         {/* Rota para a tela de Perfil */}
         <Route path="/profile-select" element={<ProfileSelectScreen />} />
 
-        {/* Rota para a tela de selecionar sala */}
-        <Route path="/enter" element={ <></> } />
+        {/* Rota para a tela de entrar na sala */}
+        <Route path="/enter" element={<EnterRoomScreen />} />
       </Routes>
     </HashRouter>
   )
