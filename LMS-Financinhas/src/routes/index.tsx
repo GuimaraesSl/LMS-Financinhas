@@ -6,6 +6,7 @@ import LoginScreen from '../pages/LoginScreen/LoginScreen'
 import EnterRoomScreen from '../pages/EnterRoomScreen/EnterRoomScreen'
 import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen'
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
+import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -25,6 +26,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para a tela de selecionar time */}
         <Route path="/select-team/:roomCode" element={<SelectTeamScreen />} />
+
+        {/* Rota para a tela editar pergunta */}
+        <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
       </Routes>
     </HashRouter>
   )
