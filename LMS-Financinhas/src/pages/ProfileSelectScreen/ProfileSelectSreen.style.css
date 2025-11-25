@@ -1,0 +1,70 @@
+  .containerProfileSelectScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+    background-image: url("../../assets/background.png");
+    box-sizing: border-box;
+    padding: clamp(10rem, 2vw, 20rem) 2rem;
+    background-repeat: repeat;
+  }
+  
+  .headerProfileSelectScreen{ 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .logoProfileSelectScreen {
+    width: clamp(200px, 72%, 400px);
+    height: auto;
+  }
+  
+  .mainProfileSelectScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .titlePage {
+    color: #000000;
+    font: 500 clamp(28px, 2vw, 32px) 'Fredoka';
+    text-align: center;
+  }
+  
+  .textButton{
+    margin-bottom: 1rem;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+  }
+  
+  .profileButton {
+    padding: clamp(0.4rem, 2vw, 0.8rem) clamp(0.8rem, 4vw, 1.5rem);
+    background-color: #13BB0A;
+    color: #00570A;
+    border: clamp(3px, 1.2vw, 5px) solid #00570A;
+    border-radius: 20px;
+    width: clamp(250px, 85%, 500px);
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(18px, 4vw, 30px);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: clamp(4px, 2vw, 8px) clamp(3px, 1.5vw, 6px) 0px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+  }
+  
+  .profileButton:hover {
+    transform: scale(1.05);
+  }
+  
+  .profileButton:active {
+    transform: scale(1);
+    box-shadow: none;
+  }
