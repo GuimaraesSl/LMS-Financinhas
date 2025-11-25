@@ -16,7 +16,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/login" element={<LoginScreen />} />
 
         {/* Rota para a tela editar pergunta */}
-        <Route path="/edit-questions" element={<EditQuestionScreen />} />
+        <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
       </Routes>
     </HashRouter>
   )

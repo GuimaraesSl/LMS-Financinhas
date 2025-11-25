@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './EditQuestionScreen.style.css'
 import InputField from '../../components/InputField/InputField'
 import logo from '../../assets/Logo-Subtitle.svg'
@@ -9,6 +9,8 @@ import { MdClose } from 'react-icons/md'
 
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
+  const { questionId } = useParams<{ questionId: string }>()
+  console.log(questionId)
 
   const [question, setQuestion] = React.useState('')
   const [answer, setAnswer] = React.useState('')
