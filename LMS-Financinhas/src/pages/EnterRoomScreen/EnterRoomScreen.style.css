@@ -52,21 +52,23 @@
   color: #1D1D1D;
 }
 
-.inputEnterRoomScreen {
-  border:  3px solid #1D1D1D; 
-  border-radius: 20px;
-  width: 553px;
-  height: 80px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 35px;
-  padding: 20px;
-  margin-bottom: 44px;
-  margin-top: 20px;
-}
-
-.inputEnterRoomScreen {
-  outline: none;
+@layer overrides {
+  .inputEnterRoomScreen {
+    border:  3px solid #1D1D1D; 
+    border-radius: 20px;
+    width: 553px;
+    height: 80px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    padding: 20px;
+    margin-bottom: 44px;
+    margin-top: 20px;
+  }
+  
+  .inputEnterRoomScreen {
+    outline: none;
+  }
 }
 
 .EnterRoomButton{

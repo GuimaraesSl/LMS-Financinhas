@@ -3,6 +3,7 @@ import logo from '../../assets/Logo-Subtitle.svg'
 import './EnterRoomScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import InputField from '../../components/InputField/InputField'
 
 const EnterRoomScreen: React.FC = () => {
   const navigate = useNavigate()
@@ -35,14 +36,15 @@ const EnterRoomScreen: React.FC = () => {
       </header>
       <main className="mainEnterRoomScreen">
         <h2>Digite o código para entrar na sala</h2>
-        {/* Input agora controlado pelo estado */}
-        <input
-          placeholder="Digite seu código"
-          type="text"
-          value={roomCode}
-          onChange={(e) => setRoomCode(e.target.value)}
-          className="inputEnterRoomScreen"
-        />
+         <InputField
+            placeholder='Digite seu código'
+            value={roomCode}
+            id='roomCode'
+            name='roomCode'
+            type="text"
+            onChange={(e) => setRoomCode(e.target.value)}
+            className="inputEnterRoomScreen"
+          />
         <button className="EnterRoomButton" onClick={handlePlayerRoom}>
           CONTINUAR
         </button>

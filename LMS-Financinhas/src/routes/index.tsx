@@ -16,7 +16,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/login" element={<LoginScreen />} />
 
         {/* Rota para a tela de entrar na sala */}
-        <Route path="/enter-room" element={<EnterRoomScreen />} />
+        <Route path="/enter" element={<EnterRoomScreen />} />
       </Routes>
     </HashRouter>
   )
