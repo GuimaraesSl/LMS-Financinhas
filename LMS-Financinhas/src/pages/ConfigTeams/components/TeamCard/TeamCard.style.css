@@ -1,0 +1,238 @@
+.teamCard {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 90px;
+    align-items: stretch;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.teamContent {
+    background-color: #f0f0f0;
+    border: 4px solid #BEBEBE;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    min-height: 80px;
+}
+
+.deleteButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 80px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.deleteButton {
+    background-color: #F14C4C;
+    border: 4px solid #570000;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.deleteButton:hover {
+    transform: scale(1.03);
+}
+
+.deleteButton img {
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+}
+
+.teamRow {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.interColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.teamIcon {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.teamName {
+    font-size: 18px;
+    color: #000;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+}
+
+.teamPoints {
+    font-size: 14px;
+    color: #878787;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .teamCard {
+        gap: 14px;
+        min-height: 85px;
+        margin-right: 15px;
+    }
+
+    .teamContent {
+        border: 3px solid #BEBEBE;
+        padding: 12px;
+        min-height: 75px;
+    }
+
+    .deleteButtonContainer {
+        width: 70px;
+    }
+
+    .deleteButton {
+        border: 3px solid #570000;
+        font-size: 18px;
+    }
+
+    .deleteButton img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .teamIcon {
+        height: 45px;
+        width: 45px;
+    }
+
+    .teamName {
+        font-size: 17px;
+    }
+
+    .teamPoints {
+        font-size: 13px;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .teamCard {
+        gap: 12px;
+        min-height: 80px;
+        margin-right: 10px;
+    }
+
+    .teamContent {
+        border: 3px solid #BEBEBE;
+        padding: 10px;
+        min-height: 72px;
+        border-radius: 8px;
+    }
+
+    .deleteButtonContainer {
+        width: 65px;
+    }
+
+    .deleteButton {
+        border: 3px solid #570000;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .deleteButton img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .teamIcon {
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+    }
+
+    .teamName {
+        font-size: 16px;
+    }
+
+    .teamPoints {
+        font-size: 12px;
+    }
+
+    .interColumn {
+        gap: 2px;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) {
+    .teamCard {
+        gap: 10px;
+        min-height: 75px;
+        margin-right: 8px;
+    }
+
+    .teamContent {
+        border: 2px solid #BEBEBE;
+        padding: 8px;
+        min-height: 68px;
+    }
+
+    .deleteButtonContainer {
+        width: 60px;
+    }
+
+    .deleteButton {
+        border: 2px solid #570000;
+        font-size: 14px;
+    }
+
+    .deleteButton img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .teamIcon {
+        height: 35px;
+        width: 35px;
+        margin-right: 6px;
+    }
+
+    .teamName {
+        font-size: 15px;
+    }
+
+    .teamPoints {
+        font-size: 11px;
+    }
+}
+
+/* Ajuste para zoom em desktop */
+@media (min-width: 769px) {
+    .teamCard {
+        margin-right: 25px;
+    }
+
+    .deleteButtonContainer {
+        width: 85px;
+    }
+}
