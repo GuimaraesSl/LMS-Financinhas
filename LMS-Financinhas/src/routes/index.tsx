@@ -7,6 +7,7 @@ import EnterRoomScreen from '../pages/EnterRoomScreen/EnterRoomScreen'
 import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen'
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
+import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -29,6 +30,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para a tela editar pergunta */}
         <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
+
+        {/*Rota para tela de configuração do quiz*/}
+        <Route path="/config/:quizId" element={<ConfigTeam />} />
       </Routes>
     </HashRouter>
   )
