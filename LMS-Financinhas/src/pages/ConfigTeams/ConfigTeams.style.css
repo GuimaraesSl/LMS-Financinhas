@@ -1,0 +1,269 @@
+.containerConfigTeam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: white;
+    background-image: url("../../assets/background.png");
+    background-position: center;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.mainConfigTeam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1043px;
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.titleConfigTeam {
+    font-size: 32px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.rankingContainer {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border: 4px solid #000;
+    border-radius: 10px;
+    box-shadow: 12px 12px 0px #000;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.rankingHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-family: 'Fredoka', sans-serif;
+    color: #000;
+}
+
+.rankingTitle {
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.addTeamButton {
+    display: flex;
+    background-color: #13bb0a;
+    font-family: 'Fredoka', sans-serif;
+    color: #00570A;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    border: 4px solid #00570A;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.addTeamButton:hover {
+    transform: scale(1.05);
+}
+
+.addTeamButton img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.teamsList {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.startButton {
+    background-color: #13bb0a;
+    color: #00570A;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    border: 5px solid #00570A;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    box-shadow: 8px 6px 0px 0px #000;
+    transition: transform 0.2s ease-in-out;
+}
+
+.startButton:hover {
+    transform: scale(1.05);
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .containerConfigTeam {
+        padding: 15px;
+    }
+
+    .mainConfigTeam {
+        padding: 5px;
+    }
+
+    .titleConfigTeam {
+        font-size: 28px;
+    }
+
+    .rankingContainer {
+        padding: 12px 15px;
+        box-shadow: 10px 10px 0px #000;
+    }
+
+    .rankingHeader {
+        font-size: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .addTeamButton {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+
+    .addTeamButton img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .teamsList {
+        max-height: 350px;
+    }
+
+    .startButton {
+        font-size: 18px;
+        padding: 10px 35px;
+        box-shadow: 7px 5px 0px 0px #000;
+        margin-bottom: 25px;
+
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .containerConfigTeam {
+        padding: 10px;
+        justify-content: flex-start;
+        min-height: 100vh;
+    }
+
+    .mainConfigTeam {
+        padding: 5px;
+    }
+
+    .titleConfigTeam {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .rankingContainer {
+        padding: 10px 12px;
+        border: 3px solid #000;
+        box-shadow: 8px 8px 0px #000;
+    }
+
+    .rankingHeader {
+        font-size: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .addTeamButton {
+        font-size: 16px;
+        padding: 8px 12px;
+        width: 100%;
+        justify-content: center;
+        border: 3px solid #00570A;
+    }
+
+    .addTeamButton img {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
+    .teamsList {
+        max-height: 280px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .startButton {
+        font-size: 18px;
+        padding: 10px 30px;
+        width: 100%;
+        border: 4px solid #00570A;
+        box-shadow: 6px 5px 0px 0px #000;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) {
+    .containerConfigTeam {
+        padding: 10px;
+    }
+
+    .titleConfigTeam {
+        font-size: 22px;
+    }
+
+    .rankingContainer {
+        padding: 8px 10px;
+        border: 2px solid #000;
+        box-shadow: 6px 6px 0px #000;
+    }
+
+    .rankingHeader {
+        font-size: 16px;
+    }
+
+    .addTeamButton {
+        font-size: 14px;
+        padding: 6px 10px;
+        border: 2px solid #00570A;
+    }
+
+    .teamsList {
+        max-height: 240px;
+    }
+
+    .startButton {
+        font-size: 16px;
+        padding: 8px 25px;
+        border: 3px solid #00570A;
+        box-shadow: 5px 4px 0px 0px #000;
+    }
+}
+
+/* Ajustes para zoom */
+@media (min-width: 769px) {
+    .containerConfigTeam {
+        padding: 20px;
+        padding-bottom: 20px;
+    }
+
+    .mainConfigTeam {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
