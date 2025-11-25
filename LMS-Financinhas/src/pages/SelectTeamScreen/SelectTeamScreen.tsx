@@ -2,11 +2,14 @@ import React from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './SelectTeamScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const SelectTeamScreen: React.FC = () => {
   const navigate = useNavigate()
+  const { roomCode } = useParams()
+  
+  console.log(roomCode)
 
   return (
     <div className="containerSelectTeamScreen">
