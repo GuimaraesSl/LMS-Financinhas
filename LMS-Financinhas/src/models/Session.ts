@@ -1,17 +1,15 @@
-import type Team from './Team'
+import Team from './Team'
 
-export const SessionStatus = {
-    PENDING: 'PENDING',
-    ACTIVE: 'ACTIVE',
-    FINISHED: 'FINISHED'
-} as const
-
-export type SessionStatus = typeof SessionStatus[keyof typeof SessionStatus]
+export enum SessionStatus {
+  PENDING = 'PENDING',
+  ACTIVE = 'ACTIVE',
+  FINISHED = 'FINISHED'
+}
 
 export interface Session {
-    code: string
-    quizId: string
-    professorId: string
-    teams: Team[]
-    status: SessionStatus
+  code: string
+  quizId: string
+  professorId: string
+  teams: Team[]
+  status: SessionStatus
 }
