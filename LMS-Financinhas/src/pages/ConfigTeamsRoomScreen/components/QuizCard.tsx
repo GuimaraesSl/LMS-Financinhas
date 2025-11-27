@@ -39,13 +39,15 @@ const QuizCard: React.FC<QuizCardProps> = ({ quizzes, onDelete }) => {
           <img src={EditIcon} alt="Ícone lápis" />
         </button>
         <button
-          className="deleteButton"
+          className="deleteIconButton"
           onClick={() => {
             onDelete(quizzes.id)
           }}
         >
           <img src={DeleteIcon} alt="Ícone lixeira" />
         </button>
+
+        
       </div>
     </div>
   )
