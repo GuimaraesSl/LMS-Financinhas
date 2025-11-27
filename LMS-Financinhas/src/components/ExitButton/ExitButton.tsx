@@ -1,4 +1,3 @@
-
 import type { FC } from 'react';
 import logoutIcon from '../../assets/line-md_log-out.svg'
 import './ExitButton.style.css'

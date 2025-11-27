@@ -36,3 +36,63 @@
   display: flex;
   justify-content: center;
 }
+
+/* Tablets */
+@media (max-width: 768px) {
+  .headerFinancinhas {
+    padding: 20px 40px;
+  }
+
+  .profileNameFinancinhas {
+    font-size: 20px;
+  }
+
+  .logoFinancinhas {
+    width: 400px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .headerFinancinhas {
+    padding: 15px 20px;
+  }
+
+  .profileContainerFinancinhas {
+    width: auto;
+  }
+
+  .profileIconFinancinhas {
+    height: 40px;
+    width: 40px;
+  }
+
+  .profileNameFinancinhas {
+    font-size: 16px;
+  }
+
+  .logoFinancinhas {
+    width: 280px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) {
+  .headerFinancinhas {
+    padding: 12px 15px;
+  }
+
+  .profileIconFinancinhas {
+    height: 36px;
+    width: 36px;
+    margin-right: 8px;
+  }
+
+  .profileNameFinancinhas {
+    font-size: 14px;
+  }
+
+  .logoFinancinhas {
+    width: 220px;
+  }
+}

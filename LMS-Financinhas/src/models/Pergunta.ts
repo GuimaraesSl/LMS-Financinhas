@@ -5,4 +5,3 @@ export interface Pergunta {
   correta: string
   justificativa: string
 }
-

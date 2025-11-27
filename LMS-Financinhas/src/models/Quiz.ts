@@ -1,4 +1,4 @@
-import type { Pergunta } from "./Pergunta"
+import type { Pergunta } from './Pergunta'
 
 export interface Quiz {
   id: string
@@ -6,4 +6,3 @@ export interface Quiz {
   descricao: string
   perguntas: Pergunta[]
 }
-

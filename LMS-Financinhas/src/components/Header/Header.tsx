@@ -1,9 +1,8 @@
-
+import type { FC } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import profileIcon from '../../assets/iconeProfile.svg'
 import ExitButton from '../ExitButton/ExitButton'
 import './Header.style.css'
-import type { FC } from 'react'
 
 interface HeaderProps {
   className?: string
