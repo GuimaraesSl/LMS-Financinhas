@@ -1,18 +1,29 @@
-import React from 'react'
-import './InputField.style.css'
+import React from "react";
+import "./InputField.style.css";
 
 interface InputFieldProps {
-  label?: string
-  type: string
-  id: string
-  name: string
-  value?: string
-  placeholder?: string
-  className?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  label?: string;
+  type: string;
+  id: string;
+  name: string;
+  value?: string;
+  placeholder?: string;
+  className?: string;
+  required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ className, placeholder, label, type, id, name, value, onChange }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  className,
+  placeholder,
+  label,
+  type,
+  id,
+  name,
+  value,
+  onChange,
+  required = false,
+}) => {
   return (
     <div className="inputField">
       {label && <label htmlFor={id}>{label}</label>}
@@ -24,9 +35,10 @@ const InputField: React.FC<InputFieldProps> = ({ className, placeholder, label, 
         placeholder={placeholder}
         onChange={onChange}
         className={className}
+        required={required}
       />
     </div>
   );
-}
+};
 
-export default InputField
+export default InputField;

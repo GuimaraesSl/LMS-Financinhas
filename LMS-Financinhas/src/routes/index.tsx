@@ -1,8 +1,8 @@
-
 import React from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import LoginScreen from '../pages/LoginScreen/LoginScreen'
+import ConfigTeamRoomScreen from '../pages/ConfigTeamsRoomScreen/ConfigTeamsRoomScreen'
 import EnterRoomScreen from '../pages/EnterRoomScreen/EnterRoomScreen'
 import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen'
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
@@ -31,8 +31,11 @@ const AppRoutes: React.FC = () => {
         {/* Rota para a tela editar pergunta */}
         <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
 
-        {/*Rota para tela de configuração do quiz*/}
+        {/* Rota para a tela de configuração do quiz */}
         <Route path="/config/:quizId" element={<ConfigTeam />} />
+
+        {/* Rota para a tela config team room */}
+        <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
       </Routes>
     </HashRouter>
   )

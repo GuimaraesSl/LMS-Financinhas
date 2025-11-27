@@ -1,10 +1,8 @@
-import Pergunta from './Pergunta'
+import type { Pergunta } from './Pergunta'
 
-interface Quiz {
+export interface Quiz {
   id: string
   titulo: string
   descricao: string
   perguntas: Pergunta[]
 }
-
-export default Quiz
