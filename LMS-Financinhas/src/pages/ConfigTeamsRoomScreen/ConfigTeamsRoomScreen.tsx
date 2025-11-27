@@ -1,57 +1,116 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Mais from '../../assets/icon+.svg'
-import './ConfigTeamRoomScreen.style.css'
-import '../ProfileSelect/ProfileSelectScreen.styles.css'
-import QuizCard from './components/QuizCard'
-import Header from '../../components/Header/Header'
-import type { Quiz } from '../../models/Quiz'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Mais from "../../assets/icon+.svg";
+import Header from "../../components/Header/Header";
+import type { Quiz } from "../../models/Quiz";
+import "../ProfileSelectScreen/ProfileSelectSreen.style.css";
+import QuizCard from "./components/QuizCard";
+import "./ConfigTeamRoomScreen.style.css";
+import { useAuth } from "../../contexts/authContext";
+import {
+  createQuiz,
+  listQuizzesByProfessor,
+  removeQuiz,
+} from "../../firebase/quiz/quiz";
+import InputField from "../../components/InputField/InputField";
 
 const ConfigTeamRoomScreen: React.FC = () => {
-  const navigate = useNavigate()
-  const [quizzes, setQuizzes] = useState<Quiz[]>([])
-  const [loading, setLoading] = useState(false)
-  const [profileName, setProfileName] = useState<string | null>('Professor')
-  const [showCreateQuizForm, setShowCreateQuizForm] = useState(false)
-  const [newQuiz, setNewQuiz] = useState<Quiz>({ id: '', titulo: '', descricao: '', perguntas: [] })
+  const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
+  const [quizzes, setQuizzes] = useState<Quiz[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [profileName, setProfileName] = useState<string | null>(null);
+  const [showCreateQuizForm, setShowCreateQuizForm] = useState(false);
+  const [newQuiz, setNewQuiz] = useState<Quiz>({
+    id: "",
+    titulo: "",
+    descricao: "",
+    perguntas: [],
+  });
+  useEffect(() => {
+    const fetchQuizzes = async (): Promise<void> => {
+      if (!currentUser) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const quizzesList = await listQuizzesByProfessor(currentUser.uid);
+        setQuizzes(quizzesList);
+      } catch (error) {
+        console.error("Erro ao listar quizzes:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleLogout = (): void => {
-    navigate('/')
-    alert('Usuário Desconectado')
+    fetchQuizzes();
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (currentUser) {
+      setProfileName(currentUser.displayName || "Usuário");
+    }
+  }, [currentUser]);
+
+  if (loading) {
+    return <div>Carregando...</div>;
   }
 
-  const handleDeleteQuiz = (quizId: string): void => {
-    console.log('HANDLE DELETE', quizId)
-    setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId))
-    alert('Quiz removido com sucesso!')
-  }
+  const handleLogout = async (): Promise<void> => {
+    await logout();
+    navigate("/");
+    alert("Usuário Desconectado");
+  };
 
-  const handleCreateQuizSubmit = (e: React.FormEvent): void => {
-    e.preventDefault()
+  const handleDeleteQuiz = async (quizId: string): Promise<void> => {
+    console.log("HANDLE");
+    try {
+      await removeQuiz(currentUser!.uid, quizId);
+      setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
+      alert("Quiz removido com sucesso!");
+    } catch (error) {
+      console.error("Erro ao remover o quiz:", error);
+      alert("Não foi possível remover o quiz. Tente novamente mais tarde.");
+    }
+  };
+
+  const handleCreateQuizSubmit = async (e: React.FormEvent): Promise<void> => {
+    e.preventDefault();
 
     if (!newQuiz.titulo || !newQuiz.descricao) {
-      alert('Por favor, preencha todos os campos!')
-      return
+      alert("Por favor, preencha todos os campos!");
+      return;
     }
-
-    const createdQuiz: Quiz = {
-      ...newQuiz,
-      id: Date.now().toString() // ID temporário
+    try {
+      if (currentUser) {
+        const createdQuiz = await createQuiz(currentUser.uid, newQuiz);
+        setQuizzes([...quizzes, createdQuiz]);
+        setShowCreateQuizForm(false);
+        if (createdQuiz.id) {
+          navigate(`/teacher-question/${createdQuiz.id}`);
+        } else {
+          console.error("Erro: ID do quiz não definido.");
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao criar o quiz:", error);
     }
-
-    setQuizzes([...quizzes, createdQuiz])
-    setShowCreateQuizForm(false)
-    navigate(`/teacher-question/${createdQuiz.id}`)
-  }
+  };
 
   return (
     <div className="containerConfigTeamRoomScreen">
-      <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
+      <Header
+        profileName={profileName || "Usuário"}
+        onExit={() => handleLogout()}
+      />
       <main className="mainConfigTeamRoomScreen">
         <div className="registeredConfigTeamRooms">
           <div className="sectionHeaderConfigTeamRoomScreen">
             <h2 className="titleRegisteredTeamRoom">SEUS JOGOS CADASTRADOS</h2>
-            <button className="buttonAddTeamRoom" onClick={() => setShowCreateQuizForm(true)}>
+            <button
+              className="buttonAddTeamRoom"
+              onClick={() => setShowCreateQuizForm(true)}
+            >
               <img src={Mais} alt="Adicionar Jogo" />
               ADICIONAR JOGO
             </button>
@@ -61,30 +120,42 @@ const ConfigTeamRoomScreen: React.FC = () => {
             <div className="modal">
               <div className="modalContent">
                 <h2>Criar Novo Jogo</h2>
-                <form onSubmit={handleCreateQuizSubmit} className="createQuizForm">
+                <form
+                  onSubmit={handleCreateQuizSubmit}
+                  className="createQuizForm"
+                >
                   <div>
                     <label htmlFor="titulo">Título do Jogo</label>
-                    <input
+                    <InputField
                       type="text"
                       id="titulo"
+                      name="titulo"
                       value={newQuiz.titulo}
-                      onChange={(e) => setNewQuiz({ ...newQuiz, titulo: e.target.value })}
-                      required
+                      onChange={(e) =>
+                        setNewQuiz({ ...newQuiz, titulo: e.target.value })
+                      }
+                      required={true}
                     />
                   </div>
                   <div>
                     <label htmlFor="descricao">Descrição do Jogo</label>
-                    <input
+                    <InputField
                       type="text"
                       id="descricao"
+                      name="descricao"
                       value={newQuiz.descricao}
-                      onChange={(e) => setNewQuiz({ ...newQuiz, descricao: e.target.value })}
-                      required
+                      onChange={(e) =>
+                        setNewQuiz({ ...newQuiz, descricao: e.target.value })
+                      }
+                      required={true}
                     />
                   </div>
                   <div className="buttonGroup">
                     <button type="submit">Criar Jogo</button>
-                    <button type="button" onClick={() => setShowCreateQuizForm(false)}>
+                    <button
+                      type="button"
+                      onClick={() => setShowCreateQuizForm(false)}
+                    >
                       Cancelar
                     </button>
                   </div>
@@ -97,9 +168,9 @@ const ConfigTeamRoomScreen: React.FC = () => {
             <QuizCard
               key={quiz.id}
               quizzes={{
-                id: quiz.id || '',
+                id: quiz.id || "",
                 quizzes: quiz.titulo,
-                answer: quiz.descricao
+                answer: quiz.descricao,
               }}
               onDelete={() => handleDeleteQuiz(quiz.id)}
             />
@@ -108,7 +179,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
       </main>
       <footer className="footerConfigTeamRoomScreen" />
     </div>
-  )
-}
+  );
+};
 
-export default ConfigTeamRoomScreen
+export default ConfigTeamRoomScreen;

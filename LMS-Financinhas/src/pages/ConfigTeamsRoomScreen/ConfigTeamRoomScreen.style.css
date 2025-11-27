@@ -1,59 +1,75 @@
-/* Estilo do modal (pop-up) */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+  background-color: rgba(0, 0, 0, 0.6); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Garante que o modal fique acima de outros conteúdos */
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
 }
 
 .modalContent {
+  font-family: 'Fredoka', sans-serif;
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   width: 400px;
-  max-width: 100%;
-  text-align: center;
+  max-width: 90%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  position: relative;
 }
 
-.modal h2 {
-  margin-bottom: 20px;
+.modalContent h2 {
+  margin: 0 0 20px 0;
   font-size: 24px;
   font-weight: bold;
   color: #13bb0a;
+  text-align: center;
 }
 
-.createQuizForm input {
+.createQuizForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.createQuizForm label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.createQuizForm input,
+.createQuizForm .inputField input {
   width: 100%;
   padding: 12px;
-  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
-.createQuizForm input:focus {
+.createQuizForm input:focus,
+.createQuizForm .inputField input:focus {
   border-color: #13bb0a;
   outline: none;
 }
 
 .createQuizForm .buttonGroup {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .createQuizForm button {
+  flex: 1;
   padding: 12px 20px;
   border: none;
   background-color: #13bb0a;
@@ -66,15 +82,17 @@
 }
 
 .createQuizForm button:hover {
-  background-color: #00570a;
+  background-color: #038d13;
 }
 
 .createQuizForm button[type="button"] {
-  background-color: #ccc;
+  background-color: #d60000;
+  color: #ffffff;
 }
 
 .createQuizForm button[type="button"]:hover {
-  background-color: #888;
+  background-color: #af0101;
+  color: white;
 }
 
 /* Estilo do botão de fechar (cancelar) */
