@@ -8,6 +8,7 @@ import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
 import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
+import TeacherViewRanking from '../pages/TeacherViewRanking/TeacherViewRanking'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -33,6 +34,9 @@ const AppRoutes: React.FC = () => {
 
         {/*Rota para tela de configuração do quiz*/}
         <Route path="/config/:quizId" element={<ConfigTeam />} />
+
+        {/* Rota para a tela de visualização do ranking pelo professor */}
+        <Route path="/teacher-view-ranking/:quizId" element={<TeacherViewRanking />} />
       </Routes>
     </HashRouter>
   )
