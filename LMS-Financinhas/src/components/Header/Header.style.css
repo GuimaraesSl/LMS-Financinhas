@@ -1,0 +1,38 @@
+.headerFinancinhas { 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px 80px;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.profileContainerFinancinhas {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 214px;
+}
+
+.profileIconFinancinhas {
+  height: 48px;
+  width: 48px;
+  margin-right: 10px;
+}
+
+.profileNameFinancinhas {
+  font-size: 22px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  color: #000;
+}
+
+.logoFinancinhas {
+  width: 500px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
