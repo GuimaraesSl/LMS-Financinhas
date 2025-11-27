@@ -90,8 +90,19 @@ const TeacherViewRanking: FC = () => {
   }, [roomCode])
 
   const [session, loading, error] = useDocumentData(sessionRef)
-  const teams = session?.teams || []
+
+  // mock para teste sem backend
+  const mockTeams = [
+    { name: 'Equipe Folha', points: 250 },
+    { name: 'Equipe Água', points: 180 },
+    { name: 'Equipe Maçã', points: 220 },
+    { name: 'Equipe Gato', points: 150 },
+    { name: 'Equipe Cachorro', points: 200 }
+  ]
+
+  const teams = session?.teams || mockTeams
   const sortedTeams = [...teams].sort((a, b) => b.points - a.points)
+
 
   if (loading) {
     return (

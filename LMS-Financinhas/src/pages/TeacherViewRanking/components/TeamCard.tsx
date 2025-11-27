@@ -12,18 +12,18 @@ interface TeamCardProps {
 }
 
 const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
-  const teamImages: Record<string, string> = {
+  const teamImages = {
     'Equipe Folha': folha,
     'Equipe Água': agua,
     'Equipe Maçã': maca,
     'Equipe Gato': gato,
     'Equipe Cachorro': cachorro
-  }
+  } as const
 
   return (
     <div className="containerTeamReviewCard">
       <div className="logoReviewTeam">
-        <img src={teamImages[team.name] || folha} alt="logo equipe" />
+        <img src={teamImages[team.name]} alt="logo equipe" />
       </div>
       <div className="nameTeam">
         <h2 className="teamName">{team.name}</h2>
@@ -32,4 +32,5 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
     </div>
   )
 }
+
 export default TeamCard
