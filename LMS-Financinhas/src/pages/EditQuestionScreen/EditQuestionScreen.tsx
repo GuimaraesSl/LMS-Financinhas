@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import './EditQuestionScreen.style.css'
 import InputField from '../../components/InputField/InputField'
@@ -6,18 +6,59 @@ import logo from '../../assets/Logo-Subtitle.svg'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { MdClose } from 'react-icons/md'
+import { getQuestionFromQuiz, editQuestionInQuiz } from '../../firebase/quiz/quiz'
+import { useAuth } from '../../contexts/authContext'
+import Pergunta from '../../models/Pergunta'
 
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
-  const { questionId } = useParams<{ questionId: string }>()
-  console.log(questionId)
+  const quizId = 'rAEq0PMTdyEkPWiknj81'
+  const { currentUser } = useAuth()
 
-  const [question, setQuestion] = React.useState('')
-  const [answer, setAnswer] = React.useState('')
-  const [wrongAnswer1, setWrongAnswer1] = React.useState('')
-  const [wrongAnswer2, setWrongAnswer2] = React.useState('')
-  const [wrongAnswer3, setWrongAnswer3] = React.useState('')
-  const [justification, setJustification] = React.useState('')
+  const { enunciadoAntigo } = useParams<{ enunciadoAntigo: string }>()
+
+  const [question, setQuestion] = useState('')
+  const [answer, setAnswer] = useState('')
+  const [wrongAnswer1, setWrongAnswer1] = useState('')
+  const [wrongAnswer2, setWrongAnswer2] = useState('')
+  const [wrongAnswer3, setWrongAnswer3] = useState('')
+  const [justification, setJustification] = useState('')
+  const [notification, setNotification] = useState<{ type: string; message: string } | null>(null)
+
+  useEffect(() => {
+    const fetchQuestion = async (): Promise<void> => {
+      if (currentUser && quizId && enunciadoAntigo) {
+        try {
+          const pergunta = await getQuestionFromQuiz(
+            currentUser.uid,
+            quizId,
+            decodeURIComponent(enunciadoAntigo)
+          )
+
+          if (pergunta) {
+            const correctIndex = pergunta.alternativas.findIndex((alt) => alt === pergunta.correta)
+            if (correctIndex !== -1) {
+              setQuestion(pergunta.enunciado)
+              setAnswer(pergunta.correta)
+
+              const wrongAlternatives = pergunta.alternativas.filter(
+                (_, index) => index !== correctIndex
+              )
+              setWrongAnswer1(wrongAlternatives[0] || '')
+              setWrongAnswer2(wrongAlternatives[1] || '')
+              setWrongAnswer3(wrongAlternatives[2] || '')
+
+              setJustification(pergunta.justificativa)
+            }
+          }
+        } catch (error) {
+          console.error('Erro ao buscar a pergunta:', error)
+        }
+      }
+    }
+
+    fetchQuestion()
+  }, [currentUser, quizId, enunciadoAntigo])
 
   const handleBack = (): void => {
     confirmAlert({
@@ -47,19 +88,45 @@ const EditQuestionScreen: React.FC = () => {
     })
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
 
     if (!question || !answer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3 || !justification) {
       alert('Por favor, preencha todos os campos!')
       return
     }
-    
-    navigate('/questions')
+
+    const perguntaAtualizada: Pergunta = {
+      enunciado: question,
+      correta: answer,
+      alternativas: [wrongAnswer1, wrongAnswer2, wrongAnswer3, answer],
+      justificativa: justification
+    }
+
+    try {
+      if (currentUser && quizId && enunciadoAntigo) {
+        await editQuestionInQuiz(currentUser.uid, quizId, enunciadoAntigo, perguntaAtualizada)
+        setNotification({ type: 'success', message: 'Pergunta editada com sucesso!' })
+
+        setTimeout(() => setNotification(null), 3000)
+
+        setTimeout(() => navigate('/teacher-question'), 3000)
+      }
+    } catch (error) {
+      console.error('Erro ao editar a pergunta:', error)
+      setNotification({ type: 'error', message: 'Ocorreu um erro ao editar a pergunta.' })
+
+      setTimeout(() => setNotification(null), 3000)
+    }
   }
 
   return (
     <div className="containerEditQuestionScreen">
+
+      {notification && (
+        <div className={`notification ${notification.type}`}>{notification.message}</div>
+      )}
+
       <header className="headerEditQuestionScreen">
         <img src={logo} className="logoEditQuestionScreen" alt="Logo Financinhas" />
       </header>
