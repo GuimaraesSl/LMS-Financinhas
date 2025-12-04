@@ -1,5 +1,5 @@
 import React from 'react'
-//import { createUser } from '@renderer/firebase/auth/auth'
+import { createUser } from '../../firebase/auth/auth'
 import { useNavigate } from 'react-router-dom'
 import './RegisterScreen.style.css'
 import InputField from '../../components/InputField/InputField'
@@ -38,7 +38,6 @@ const Cadastro: React.FC = () => {
       return
     }
 
-    /* Esperando conexão com o backend estar pronta
     try {
       await createUser(email, password, name)
       console.log('User registered successfully', name, email, password)
@@ -49,7 +48,6 @@ const Cadastro: React.FC = () => {
       console.error('Error during registration:', error)
       alert(`Erro ao realizar o cadastro. Verifique os dados e tente novamente. ${error}`)
     }
-    */
   }
 
   const handleLoginRedirect = (): void => {
