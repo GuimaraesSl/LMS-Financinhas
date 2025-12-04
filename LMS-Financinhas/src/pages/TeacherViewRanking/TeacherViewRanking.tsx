@@ -3,7 +3,7 @@ import { FC, useState, useEffect, useRef, useMemo } from 'react'
 import Header from '../../components/Header/Header'
 import { useNavigate, useParams } from 'react-router-dom'
 import './TeacherViewRanking.style.css'
-//import { useAuth } from '@renderer/contexts/authContext'
+import { useAuth } from '../../contexts/authContext'
 import Timer from '../../assets/timer.svg'
 import playPause from '../../assets/playPause.svg'
 import first from '../../assets/primeiro.svg'
@@ -12,15 +12,15 @@ import third from '../../assets/terceiro.svg'
 import fourth from '../../assets/quarto.svg'
 import fifth from '../../assets/quinto.svg'
 import TeamCard from './components/TeamCard'
-// import { doc } from 'firebase/firestore'
-//import { db } from '@renderer/firebase/firebase'
+import { doc } from 'firebase/firestore'
+import { db } from '../../firebase/firebase'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
 
 const TeacherViewRanking: FC = () => {
   const [profileName, setProfileName] = useState<string | null>(null)
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false)
   const [timeElapsed, setTimeElapsed] = useState<number>(0)
-  // const { currentUser, logout } = useAuth()
+  const { currentUser, logout } = useAuth()
   const { roomCode } = useParams()
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ const TeacherViewRanking: FC = () => {
   }
 
   const handleLogout = async (): Promise<void> => {
-    //await logout()
+    await logout()
     navigate('/')
   }
 
@@ -56,13 +56,11 @@ const TeacherViewRanking: FC = () => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`
   }
 
-  /*
   useEffect(() => {
     if (currentUser) {
       setProfileName(currentUser.displayName || 'Usuário')
     }
   }, [currentUser])
-  */
 
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -83,26 +81,14 @@ const TeacherViewRanking: FC = () => {
     }
   }, [isGameStarted, timeElapsed])
 
-  
   const sessionRef = useMemo(() => {
     if (!roomCode) return null
-    // return doc(db, `sessions/${roomCode}`)
+    return doc(db, `sessions/${roomCode}`)
   }, [roomCode])
 
   const [session, loading, error] = useDocumentData(sessionRef)
-
-  // mock para teste sem backend
-  const mockTeams = [
-    { name: 'Equipe Folha', points: 250 },
-    { name: 'Equipe Água', points: 180 },
-    { name: 'Equipe Maçã', points: 220 },
-    { name: 'Equipe Gato', points: 150 },
-    { name: 'Equipe Cachorro', points: 200 }
-  ]
-
-  const teams = session?.teams || mockTeams
+  const teams = session?.teams || []
   const sortedTeams = [...teams].sort((a, b) => b.points - a.points)
-
 
   if (loading) {
     return (
