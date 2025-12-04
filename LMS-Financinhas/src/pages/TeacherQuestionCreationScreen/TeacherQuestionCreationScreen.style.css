@@ -1,0 +1,289 @@
+.containerTeacherQuestionScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Fredoka', sans-serif;
+    background-color: #f9f9f9;
+    background-image: url('../../assets/background.png');
+    background-repeat: repeat;
+}
+  
+.headerTeacherQuestionScreen {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    
+    width: 100%;
+    gap: 60px;
+}
+
+.logoTeacherQuestionScreen {
+    height: 60px;
+    text-align: center;
+    flex: 1;
+}
+  
+.backButtonQuestionScreen {
+    position: absolute;
+    left: 60px;
+    top: 40px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 8px 24px;
+    background-color: #13bb0a;
+    color: #00570a;
+    border: 4px solid #00570a;
+    border-radius: 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 6px 5px 0px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+}
+  
+.backButtonQuestionScreen:hover {
+    transform: scale(1.05);
+}
+  
+.backIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    margin-left: -8px;
+    transition: transform 0.2s ease;
+}
+  
+.mainTeacherQuestionScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    color: #000000;
+    overflow: hidden;
+}
+  
+.registeredQuestions{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: calc(100% - 50px);
+    border-radius: 24px;
+    border: 4px solid #1d1d1d;
+    box-shadow: 6px 5px 0px rgba(0, 0, 0, 1);
+    background-color: #FFFFFF;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+  
+.sectionHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.questionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    min-height: 0;
+    padding-right: 4px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.questionsList::-webkit-scrollbar {
+    width: 8px;
+}
+  
+.questionsList::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+  
+.questionsList::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+  
+.titleRegisteredQuestion {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Fredoka', sans-serif;
+    color: #000000;
+}
+  
+.footerQuestionScreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 20px 0;
+}
+  
+.buttonAddQuestion{
+    padding: 8px 24px;
+    margin: 0;
+    background-color: #13bb0a;
+    color: #00570a;
+    border: 4px solid #00570a;
+    border-radius: 16px;
+    padding: 8px 24px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 6px 5px 0px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+  
+.buttonAddQuestion:hover {
+    transform: scale(1.05);
+}
+  
+.buttonQuestionScreen {
+    padding: 8px 32px;
+    background-color: #13bb0a;
+    color: #00570a;
+    border: 4px solid #00570a;
+    border-radius: 20px;
+    padding: 12px 32px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 6px 5px 0px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+    margin-bottom: 32px;
+}
+  
+  .buttonQuestionScreen:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .containerTeacherQuestionScreen {
+        padding: 0 16px;
+    }
+
+    .headerTeacherQuestionScreen {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-top: 20px;
+        gap: 16px;
+        padding: 0 16px;
+        width: 100%;
+    }
+
+    .logoTeacherQuestionScreen {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 20px 0;
+        align-self: center;
+        order: 1;
+    }
+
+    .backButtonQuestionScreen {
+        position: relative;
+        left: 0;
+        top: 0;
+        padding: 6px 18px;
+        font-size: 14px;
+        border: 3px solid #00570a;
+        border-radius: 12px;
+        box-shadow: 4px 3px 0px rgba(0, 0, 0, 1);
+        order: 2;
+    }
+
+    .backIcon {
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        margin-left: -6px;
+    }
+
+    .mainTeacherQuestionScreen {
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .registeredQuestions {
+        padding: 16px;
+        border-radius: 16px;
+        border: 3px solid #1d1d1d;
+        box-shadow: 4px 3px 0px rgba(0, 0, 0, 1);
+        max-height: calc(100% - 20px);
+    }
+
+    .sectionHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .titleRegisteredQuestion {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .buttonAddQuestion {
+        width: 100%;
+        padding: 6px 18px;
+        font-size: 14px;
+        border: 3px solid #00570a;
+        border-radius: 12px;
+        box-shadow: 4px 3px 0px rgba(0, 0, 0, 1);
+    }
+
+    .buttonAddQuestion span {
+        font-size: 18px !important;
+    }
+
+    .footerQuestionScreen {
+        padding: 16px 0;
+    }
+
+    .buttonQuestionScreen {
+        width: 100%;
+        padding: 10px 24px;
+        font-size: 18px;
+        border: 3px solid #00570a;
+        border-radius: 16px;
+        box-shadow: 4px 3px 0px rgba(0, 0, 0, 1);
+        margin-bottom: 16px;
+    }
+}
