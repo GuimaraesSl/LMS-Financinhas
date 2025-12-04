@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    min-height: 90px;
     align-items: stretch;
     margin-bottom: 10px;
     margin-right: 20px;
@@ -12,18 +11,19 @@
     background-color: #f0f0f0;
     border: 4px solid #BEBEBE;
     border-radius: 10px;
-    flex: 1;
+    width: 963px;
+    height: 96px;
     display: flex;
     align-items: center;
     padding: 15px;
-    min-height: 80px;
+    box-sizing: border-box;
 }
 
 .deleteButtonContainer {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    width: 80px;
+    width: 96px;
     flex-shrink: 0;
     background: none;
     border: none;
@@ -35,7 +35,8 @@
     background-color: #F14C4C;
     border: 4px solid #570000;
     font-size: 20px;
-    width: 100%;
+    width: 96px;
+    height: 96px;
     border-radius: 10px;
     cursor: pointer;
     display: flex;
@@ -46,6 +47,7 @@
     box-shadow: none;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .deleteButton:hover {
@@ -54,8 +56,8 @@
 
 .deleteButton img {
     pointer-events: none;
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
 }
 
 .teamRow {
@@ -72,22 +74,22 @@
 }
 
 .teamIcon {
-    height: 50px;
-    width: 50px;
-    margin-right: 10px;
+    height: 55px;
+    width: 55px;
+    margin-right: 12px;
     flex-shrink: 0;
     object-fit: contain;
 }
 
 .teamName {
-    font-size: 18px;
+    font-size: 20px;
     color: #000;
     font-family: 'Fredoka', sans-serif;
     font-weight: 500;
 }
 
 .teamPoints {
-    font-size: 14px;
+    font-size: 15px;
     color: #878787;
     font-family: 'Fredoka', sans-serif;
 }
@@ -96,28 +98,31 @@
 @media (max-width: 768px) {
     .teamCard {
         gap: 14px;
-        min-height: 85px;
         margin-right: 15px;
     }
 
     .teamContent {
         border: 3px solid #BEBEBE;
         padding: 12px;
-        min-height: 75px;
+        height: 80px;
+        width: auto;
+        flex: 1;
     }
 
     .deleteButtonContainer {
-        width: 70px;
+        width: 80px;
     }
 
     .deleteButton {
         border: 3px solid #570000;
         font-size: 18px;
+        width: 80px;
+        height: 80px;
     }
 
     .deleteButton img {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
     }
 
     .teamIcon {
@@ -138,25 +143,28 @@
 @media (max-width: 480px) {
     .teamCard {
         gap: 12px;
-        min-height: 80px;
         margin-right: 10px;
     }
 
     .teamContent {
         border: 3px solid #BEBEBE;
         padding: 10px;
-        min-height: 72px;
+        height: 70px;
+        width: auto;
+        flex: 1;
         border-radius: 8px;
     }
 
     .deleteButtonContainer {
-        width: 65px;
+        width: 70px;
     }
 
     .deleteButton {
         border: 3px solid #570000;
         font-size: 16px;
         border-radius: 8px;
+        width: 70px;
+        height: 70px;
     }
 
     .deleteButton img {
@@ -187,23 +195,26 @@
 @media (max-width: 360px) {
     .teamCard {
         gap: 10px;
-        min-height: 75px;
         margin-right: 8px;
     }
 
     .teamContent {
         border: 2px solid #BEBEBE;
         padding: 8px;
-        min-height: 68px;
+        height: 65px;
+        width: auto;
+        flex: 1;
     }
 
     .deleteButtonContainer {
-        width: 60px;
+        width: 65px;
     }
 
     .deleteButton {
         border: 2px solid #570000;
         font-size: 14px;
+        width: px;
+        height: 65px;
     }
 
     .deleteButton img {
@@ -230,9 +241,5 @@
 @media (min-width: 769px) {
     .teamCard {
         margin-right: 25px;
-    }
-
-    .deleteButtonContainer {
-        width: 85px;
     }
 }
