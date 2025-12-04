@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
 import { auth } from '../../firebase/firebase'
 import { onAuthStateChanged, User, updateProfile, signOut } from 'firebase/auth'
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { createContext, ReactNode, useContext, useEffect, useState, ReactElement } from 'react'
 
 interface AuthContextType {
   currentUser: User | null
@@ -18,7 +18,7 @@ interface AuthProviderProps {
   children: ReactNode
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps): ReactElement {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [userId, setUserId] = useState<string | null>(null)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
