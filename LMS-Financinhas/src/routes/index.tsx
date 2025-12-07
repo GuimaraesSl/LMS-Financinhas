@@ -8,6 +8,7 @@ import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
 import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
+import MatchScreenWrapper from '../pages/MatchScreen/MatchScreenWrapper'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -33,6 +34,9 @@ const AppRoutes: React.FC = () => {
 
         {/*Rota para tela de configuração do quiz*/}
         <Route path="/config/:quizId" element={<ConfigTeam />} />
+
+        {/* Rota para tela do jogo */}
+        <Route path="/match-screen/:roomCode/:teamName" element={<MatchScreenWrapper />} />
       </Routes>
     </HashRouter>
   )
