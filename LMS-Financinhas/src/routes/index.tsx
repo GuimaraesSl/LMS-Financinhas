@@ -8,6 +8,7 @@ import EnterRoomScreen from '../pages/EnterRoomScreen/EnterRoomScreen'
 import ProfileSelectScreen from '../pages/ProfileSelectScreen/ProfileSelectSreen'
 import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
+import RegisterScreen from '../pages/RegisterScreen/RegisterScreen'
 import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
 
 const AppRoutes: React.FC = () => {
@@ -35,6 +36,9 @@ const AppRoutes: React.FC = () => {
 
           {/*Rota para tela de configuração do quiz*/}
           <Route path="/config/:quizId" element={<ConfigTeam />} />
+
+          {/* Rota para a tela de Registro */}
+          <Route path="/register" element={<RegisterScreen />} />
 
           {/* Rota para a tela config team room */}
           <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
