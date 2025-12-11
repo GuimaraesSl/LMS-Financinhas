@@ -36,7 +36,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
 
           {/* Rota para a tela de visualização do ranking pelo professor */}
-          <Route path="/teacher-view-ranking/:quizId" element={<TeacherViewRanking />} />
+          <Route path="/view-ranking/:roomCode" element={<TeacherViewRanking />} />
 
           {/*Rota para tela de configuração do quiz*/}
           <Route path="/config/:quizId" element={<ConfigTeam />} />
