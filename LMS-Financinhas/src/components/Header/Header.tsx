@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import profileIcon from '../../assets/iconeProfile.svg'
 import ExitButton from '../ExitButton/ExitButton'
