@@ -5,6 +5,7 @@ import './LoginScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
 import InputField from "../../components/InputField/InputField"
 import logo from '../../assets/Logo-Subtitle.svg'
+import { signIn } from "../../firebase/auth/auth"
 
 export const LoginScreen: FC = () => {
   const navigate = useNavigate()
@@ -14,13 +15,13 @@ export const LoginScreen: FC = () => {
 
   const handleLogin = async (): Promise<void> => {
     try {
+      await signIn(email, password)
       navigate('/config-team-room')
     } catch (error) {
       alert('Erro ao fazer login, tente novamente')
       console.error('Error during sign in:', error)
     }
   }
-
 
   return (
     <div className="containerLoginScreen">
