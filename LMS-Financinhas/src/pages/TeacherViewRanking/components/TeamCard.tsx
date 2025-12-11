@@ -12,13 +12,13 @@ interface TeamCardProps {
 }
 
 const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
-  const teamImages = {
-    'Equipe Folha': folha,
-    'Equipe Água': agua,
-    'Equipe Maçã': maca,
-    'Equipe Gato': gato,
-    'Equipe Cachorro': cachorro
-  } as const
+    const teamImages: Record<string, string> = {
+      'Equipe Folha': folha,
+      'Equipe Água': agua,
+      'Equipe Maçã': maca,
+      'Equipe Gato': gato,
+      'Equipe Cachorro': cachorro
+    }
 
   return (
     <div className="containerTeamReviewCard">
