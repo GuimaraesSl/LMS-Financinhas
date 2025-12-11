@@ -1,4 +1,4 @@
-import { type FC, useState, useCallback } from 'react'
+import { FC, useState, useCallback, useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import './ConfigTeams.style.css'
 import TeamCard from './components/TeamCard/TeamCard'
@@ -8,12 +8,22 @@ import maca from '../../assets/teams/maca.svg'
 import agua from '../../assets/teams/agua.svg'
 import cachorro from '../../assets/teams/cachorro.svg'
 import Mais from '../../assets/icon+.svg'
-import type Team from '../../models/Team'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../../contexts/authContext'
+import { createSession } from '../../firebase/session/session'
+import Team from '../../models/Team'
 
 const ConfigTeam: FC = () => {
-    const [profileName] = useState<string>('Usuário')
+    const { currentUser, logout, userId } = useAuth()
+    const [profileName, setProfileName] = useState<string | null>(null)
+    const { quizId } = useParams()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (currentUser) {
+            setProfileName(currentUser.displayName || 'Usuário')
+        }
+    }, [currentUser])
 
     const defaultTeams: Team[] = [
         { name: 'Equipe Folha', points: 0, image: folha, hasAnswered: false },
@@ -55,27 +65,34 @@ const ConfigTeam: FC = () => {
         [teams]
     )
 
-    const handleContinue = (): void => {
-        const sessionCode = Math.random().toString(36).substring(2, 8).toUpperCase()
-        
-        localStorage.setItem('currentSession', JSON.stringify({
-            code: sessionCode,
-            teams: teams,
-            timestamp: new Date().toISOString()
-        }))
-        
-        alert(`Sessão criada! Código: ${sessionCode}`)
-        console.log('Teams configurados:', teams)
+    const handleContinue = async (): Promise<void> => {
+        try {
+            if (!userId || !quizId) {
+                alert('Erro: Usuário ou Quiz não identificado.')
+                return
+            }
+
+            const session = await createSession(userId, quizId, teams)
+            navigate(`/view-ranking/${session.code}`)
+        } catch (error) {
+            console.error('Erro ao criar sessão:', error)
+            alert('Erro ao criar sessão. Tente novamente.')
+        }
     }
 
-    const handleLogout = (): void => {
-        navigate('/')
-        alert('Usuário Desconectado')
+    const handleLogout = async (): Promise<void> => {
+        try {
+            await logout()
+            navigate('/')
+            alert('Usuário Desconectado')
+        } catch (error) {
+            console.error('Erro ao fazer logout:', error)
+        }
     }
 
     return (
         <div className="containerConfigTeam">
-            <Header profileName={profileName} onExit={handleLogout} />
+            <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
             <main className="mainConfigTeam">
                 <h1 className="titleConfigTeam">Equipes</h1>
                 <div className="rankingContainer">
@@ -88,7 +105,12 @@ const ConfigTeam: FC = () => {
                     </div>
                     <div className="teamsList">
                         {teams.map((team, index) => (
-                            <TeamCard key={index} index={index} team={team} handleDeleteTeam={handleDeleteTeam} />
+                            <TeamCard
+                                key={`${team.name}-${index}`}
+                                index={index}
+                                team={team}
+                                handleDeleteTeam={handleDeleteTeam}
+                            />
                         ))}
                     </div>
                 </div>
