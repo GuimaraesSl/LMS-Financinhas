@@ -9,8 +9,8 @@ import {
   deleteDoc
 } from 'firebase/firestore'
 import { db } from '../firebase'
-import Quiz from '../../models/Quiz'
-import Pergunta from '../../models/Pergunta'
+import {Quiz} from '../../models/Quiz'
+import {Pergunta} from '../../models/Pergunta'
 
 export const createQuiz = async (professorId: string, quiz: Quiz): Promise<Quiz> => {
   try {
