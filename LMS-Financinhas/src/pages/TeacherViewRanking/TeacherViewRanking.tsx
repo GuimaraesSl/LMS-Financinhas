@@ -114,7 +114,9 @@ const TeacherViewRanking: FC = () => {
 
   return (
     <div className="containerTeacherViewRanking">
-      <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
+      <div className="headerContainer">
+        <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
+      </div>
       <main className="mainTeacherViewRanking">
         <div className="infoRanking">
           <div className="codTurma">
