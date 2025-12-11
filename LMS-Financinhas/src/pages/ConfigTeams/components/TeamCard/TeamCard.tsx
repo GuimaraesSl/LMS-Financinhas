@@ -1,7 +1,7 @@
-import type { FC } from 'react'
+import { FC } from 'react'
 import deleteIcon from '../../../../assets/delete-icon.svg'
 import './TeamCard.style.css'
-import type Team from '../../../../models/Team'
+import Team from '../../../../models/Team'
 
 interface TeamCardProps {
     index: number
