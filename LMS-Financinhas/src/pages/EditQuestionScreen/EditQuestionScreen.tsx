@@ -10,7 +10,6 @@ import { MdClose } from 'react-icons/md'
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
   const { questionId } = useParams<{ questionId: string }>()
-  console.log(questionId)
 
   const [question, setQuestion] = React.useState('')
   const [answer, setAnswer] = React.useState('')
@@ -35,7 +34,7 @@ const EditQuestionScreen: React.FC = () => {
           <div className="buttonGroup">
             <button
               onClick={() => {
-                navigate('/config')
+                navigate(-1)
                 onClose()
               }}
             >

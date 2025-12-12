@@ -4,7 +4,7 @@ import './MatchScreen.style.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { doc } from 'firebase/firestore'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
-import Quiz from '../../models/Quiz'
+import {Quiz} from '../../models/Quiz'
 import { db } from '../../firebase/firebase'
 import { updateTeamHasAnswered, updateTeamPoints } from '../../firebase/session/session'
 import { Button } from '../../components/Button'
@@ -126,7 +126,7 @@ const MatchScreen: React.FC = () => {
                 <ExitButton onClick={() => navigate('/')} className="exitButton" />
             </header>
             <main className="game-area">
-                <aside className="rankings box">
+                <aside className="rankings ranking-box">
                     <h2>RANKINGS</h2>
                     <ul>
                         {sortedTeams?.map((team, index) => (
