@@ -10,6 +10,7 @@ import { MdClose } from 'react-icons/md'
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
   const { questionId } = useParams<{ questionId: string }>()
+  console.log(questionId)
 
   const [question, setQuestion] = React.useState('')
   const [answer, setAnswer] = React.useState('')
