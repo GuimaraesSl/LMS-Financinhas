@@ -10,6 +10,7 @@ import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
 import RegisterScreen from '../pages/RegisterScreen/RegisterScreen'
 import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
+import TeacherQuestionCreationScreen from '../pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
 import TeacherViewRanking from '../pages/TeacherViewRanking/TeacherViewRanking'
 
 const AppRoutes: React.FC = () => {
@@ -46,6 +47,9 @@ const AppRoutes: React.FC = () => {
 
           {/* Rota para a tela config team room */}
           <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
+
+          {/* Rota para a tela de ver as perguntas */}
+          <Route path="/teacher-question/:quizId" element={<TeacherQuestionCreationScreen />} />
         </Routes>
       </HashRouter>
     </AuthProvider>
