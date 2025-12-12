@@ -115,7 +115,7 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   background-color: #f9f9f9;
   background-image: url('../../assets/background.png');
 }
@@ -150,7 +150,7 @@
   border-radius: 20px;
   height: 60px;
   width: 200px;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
@@ -258,7 +258,7 @@
   border-radius: 20px;
   height: 80px;
   width: 1200px;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;

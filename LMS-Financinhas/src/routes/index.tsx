@@ -10,6 +10,8 @@ import SelectTeamScreen from '../pages/SelectTeamScreen/SelectTeamScreen'
 import EditQuestionScreen from '../pages/EditQuestionScreen/EditQuestionScreen'
 import RegisterScreen from '../pages/RegisterScreen/RegisterScreen'
 import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
+import MatchScreenWrapper from '../pages/MatchScreen/MatchScreenWrapper'
+import TeacherQuestionCreationScreen from '../pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
 import TeacherViewRanking from '../pages/TeacherViewRanking/TeacherViewRanking'
 
 const AppRoutes: React.FC = () => {
@@ -35,17 +37,23 @@ const AppRoutes: React.FC = () => {
           {/* Rota para a tela editar pergunta */}
           <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
 
-          {/* Rota para a tela de visualização do ranking pelo professor */}
-          <Route path="/view-ranking/:roomCode" element={<TeacherViewRanking />} />
-
           {/*Rota para tela de configuração do quiz*/}
           <Route path="/config/:quizId" element={<ConfigTeam />} />
+
+          {/* Rota para tela do jogo */}
+          <Route path="/match-screen/:roomCode/:teamName" element={<MatchScreenWrapper />} />
+          
+          {/* Rota para a tela de visualização do ranking pelo professor */}
+          <Route path="/view-ranking/:roomCode" element={<TeacherViewRanking />} />
 
           {/* Rota para a tela de Registro */}
           <Route path="/register" element={<RegisterScreen />} />
 
           {/* Rota para a tela config team room */}
           <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
+
+          {/* Rota para a tela de ver as perguntas */}
+          <Route path="/teacher-question/:quizId" element={<TeacherQuestionCreationScreen />} />
         </Routes>
       </HashRouter>
     </AuthProvider>

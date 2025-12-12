@@ -97,7 +97,7 @@ const ConfigTeam: FC = () => {
                 <h1 className="titleConfigTeam">Equipes</h1>
                 <div className="rankingContainer">
                     <div className="rankingHeader">
-                        <span className="rankingTitle">RANKING GERAL</span>
+                        <span className="rankingTitle">DEFINA SUAS EQUIPES</span>
                         <button className="addTeamButton" onClick={handleAddTeam}>
                             <img src={Mais} alt="Adicionar equipe" />
                             ADICIONAR EQUIPE
