@@ -1,96 +1,98 @@
-.headerFinancinhas {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 25px 80px;
-    box-sizing: border-box;
+.headerFinancinhas { 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px 80px;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
 }
 
 .profileContainerFinancinhas {
-    display: flex;
-    align-items: center;
-    height: 48px;
-    width: 214px;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 214px;
 }
 
 .profileIconFinancinhas {
-    height: 48px;
-    width: 48px;
-    margin-right: 10px;
+  height: 48px;
+  width: 48px;
+  margin-right: 10px;
 }
 
 .profileNameFinancinhas {
-    font-size: 22px;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: bold;
-    color: #000;
+  font-size: 22px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  color: #000;
 }
 
 .logoFinancinhas {
-    width: 500px;
-    height: auto;
-    display: flex;
-    justify-content: center;
+  width: 500px;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 /* Tablets */
 @media (max-width: 768px) {
-    .headerFinancinhas {
-        padding: 20px 40px;
-    }
+  .headerFinancinhas {
+    padding: 20px 40px;
+  }
 
-    .profileNameFinancinhas {
-        font-size: 20px;
-    }
+  .profileNameFinancinhas {
+    font-size: 20px;
+  }
 
-    .logoFinancinhas {
-        width: 400px;
-    }
+  .logoFinancinhas {
+    width: 400px;
+  }
 }
 
 /* Smartphones */
 @media (max-width: 480px) {
-    .headerFinancinhas {
-        padding: 15px 20px;
-    }
+  .headerFinancinhas {
+    padding: 15px 20px;
+  }
 
-    .profileContainerFinancinhas {
-        width: auto;
-    }
+  .profileContainerFinancinhas {
+    width: auto;
+  }
 
-    .profileIconFinancinhas {
-        height: 40px;
-        width: 40px;
-    }
+  .profileIconFinancinhas {
+    height: 40px;
+    width: 40px;
+  }
 
-    .profileNameFinancinhas {
-        font-size: 16px;
-    }
+  .profileNameFinancinhas {
+    font-size: 16px;
+  }
 
-    .logoFinancinhas {
-        width: 280px;
-    }
+  .logoFinancinhas {
+    width: 280px;
+  }
 }
 
 /* Dispositivos muito pequenos */
 @media (max-width: 360px) {
-    .headerFinancinhas {
-        padding: 12px 15px;
-    }
+  .headerFinancinhas {
+    padding: 12px 15px;
+  }
 
-    .profileIconFinancinhas {
-        height: 36px;
-        width: 36px;
-        margin-right: 8px;
-    }
+  .profileIconFinancinhas {
+    height: 36px;
+    width: 36px;
+    margin-right: 8px;
+  }
 
-    .profileNameFinancinhas {
-        font-size: 14px;
-    }
+  .profileNameFinancinhas {
+    font-size: 14px;
+  }
 
-    .logoFinancinhas {
-        width: 220px;
-    }
+  .logoFinancinhas {
+    width: 220px;
+  }
 }

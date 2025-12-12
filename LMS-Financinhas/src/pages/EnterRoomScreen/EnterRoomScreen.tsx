@@ -3,6 +3,7 @@ import logo from '../../assets/Logo-Subtitle.svg'
 import './EnterRoomScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import { getSessionByRoomCode } from '../../firebase/session/session'
 import InputField from '../../components/InputField/InputField'
 
 const EnterRoomScreen: React.FC = () => {
@@ -15,7 +16,7 @@ const EnterRoomScreen: React.FC = () => {
         throw new Error('Por favor, insira um código de sala')
       }
 
-      // futuramente o código da sala será integrado com o backend
+      await getSessionByRoomCode(roomCode)
 
       navigate(`/select-team/${roomCode}`)
     } catch (error) {
