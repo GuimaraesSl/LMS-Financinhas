@@ -22,22 +22,22 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="card">
-      <div className="content">
-        <h3 className="question">{question.enunciado}</h3>
-        <div className="answerContainer">
+    <div className="questionCard">
+      <div className="questionContent">
+        <h3 className="questionText">{question.enunciado}</h3>
+        <div className="answerQuestion">
           <img src={IconeChat} className="chatIcon" alt="chat"/>
-          <p className="answer">{question.correta}</p>
+          <p className="answerCard">{question.correta}</p>
         </div>
       </div>
-      <div className="actions">
+      <div className="actionsQuestion">
         <button
-          className="editButton"
+          className="editQuestion"
           onClick={() => navigate(`/edit-question/${encodeURIComponent(question.enunciado)}`)}
           >
           <img src={EditIcon} className="editIcon" alt="edit"/>
         </button>
-        <button className="deleteButton" onClick={onDelete}>
+        <button className="deleteQuestionButton" onClick={onDelete}>
           <img src={DeleteIcon} className="deleteIcon" alt="delete"/>
         </button>
       </div>

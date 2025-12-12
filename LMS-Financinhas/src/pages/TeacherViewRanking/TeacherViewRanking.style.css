@@ -9,6 +9,7 @@
   background-image: url("../../assets/background.png");
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .headerContainer {
@@ -25,12 +26,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 1043px;
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 20px;
-  padding-top: 30px;
+  margin-bottom: 80px;
 }
 
 .infoRanking {
@@ -52,19 +53,21 @@
   flex-direction: row;
   justify-content: center;
   justify-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .buttonStartPause.start {
   background-color: #2E9DF4;
   border-radius: 20px;
   border: solid 5px #000D61;
+  color: #000D61;
 }
 
 .buttonStartPause.pause {
   background-color: #F14C4C;
   border-radius: 20px;
   border: solid 5px #570000;
+  color: #570000;
 }
 
 .playIcon {

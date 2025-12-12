@@ -1,4 +1,4 @@
-.card {
+.questionCard {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,9 +8,10 @@
     flex-shrink: 0;
     box-sizing: border-box;
     overflow: hidden;
+    padding-bottom: 15px;
 }
   
-.content {
+.questionContent {
     background-color: #F3F3F3;
     border-radius: 10px;
     border: 4px solid #BEBEBE;
@@ -22,7 +23,7 @@
     box-sizing: border-box;
 }
   
-.question {
+.questionText {
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 8px 0;
@@ -33,13 +34,13 @@
     word-break: break-word;
 }
   
-.answerContainer {
+.answerQuestion {
     display: flex;
     align-items: center;
     gap: 8px;
 }
   
-.answer {
+.answerCard {
     font-size: 14px;
     font-weight: 400;
     color: #000000;
@@ -62,7 +63,7 @@
     color: #777;
 }
   
-.actions {
+.actionsQuestion {
     display: flex;
     gap: 10px;
     flex-shrink: 0;
@@ -70,7 +71,7 @@
     justify-content: center;
 }
   
-.editButton {
+.editQuestion {
     background-color: #FFFFFF;
     border: 3px solid #808080;
     color: #808080;
@@ -89,7 +90,7 @@
     transform: scale(1.05);
 }
   
-.deleteButton {
+.deleteQuestionButton {
     background-color: #f44336;
     border: 3px solid #570000;
     color: #FFFFFF;

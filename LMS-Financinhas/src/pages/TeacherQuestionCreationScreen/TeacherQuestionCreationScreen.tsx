@@ -5,7 +5,7 @@ import QuestionCard from './components/QuestionCard'
 import backIcon from '../../assets/back-icon.svg'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './TeacherQuestionCreationScreen.style.css'
-import Pergunta from '../../models/Pergunta'
+import {Pergunta} from '../../models/Pergunta'
 import { useAuth } from '../../contexts/authContext'
 
 const TeacherQuestionCreationScreen: React.FC = () => {
