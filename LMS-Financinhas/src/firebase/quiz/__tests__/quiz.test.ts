@@ -9,8 +9,8 @@ import {
   removeQuestionFromQuiz
 } from '../quiz'
 import { db } from '../../firebase'
-import Quiz from '../../../models/Quiz'
-import Pergunta from '../../../models/Pergunta'
+import {Quiz} from '../../../models/Quiz'
+import {Pergunta} from '../../../models/Pergunta'
 
 describe('Quiz Service (Firebase Server)', () => {
   const professorId = '5ZOsyT50MMdz894qtdfOLBIBDpy2'

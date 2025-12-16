@@ -76,7 +76,7 @@ const EditQuestionScreen: React.FC = () => {
           <div className="buttonGroup">
             <button
               onClick={() => {
-                navigate('/config')
+                navigate(-1)
                 onClose()
               }}
             >
