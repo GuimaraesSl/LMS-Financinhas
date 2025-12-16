@@ -8,7 +8,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import { MdClose } from 'react-icons/md'
 import { getQuestionFromQuiz, editQuestionInQuiz } from '../../firebase/quiz/quiz'
 import { useAuth } from '../../contexts/authContext'
-import Pergunta from '../../models/Pergunta'
+import { Pergunta } from '../../models/Pergunta'
 
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
