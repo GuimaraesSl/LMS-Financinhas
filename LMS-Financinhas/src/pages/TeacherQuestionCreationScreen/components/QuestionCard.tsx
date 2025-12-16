@@ -16,9 +16,10 @@ interface QuestionCardProps {
   question: Question
   onDelete?: () => void
   onEdit?: (id: string) => void
+  quizId?: string
 }
 
-const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete }) => {
+const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete, quizId }) => {
   const navigate = useNavigate()
 
   return (
@@ -33,7 +34,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete }) => {
       <div className="actionsQuestion">
         <button
           className="editQuestion"
-          onClick={() => navigate(`/edit-question/${encodeURIComponent(question.enunciado)}`)}
+          onClick={() => navigate(`/edit-question/${quizId}/${encodeURIComponent(question.enunciado)}`)}
           >
           <img src={EditIcon} className="editIcon" alt="edit"/>
         </button>

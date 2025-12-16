@@ -12,10 +12,9 @@ import { Pergunta } from '../../models/Pergunta'
 
 const EditQuestionScreen: React.FC = () => {
   const navigate = useNavigate()
-  const quizId = 'rAEq0PMTdyEkPWiknj81'
   const { currentUser } = useAuth()
 
-  const { enunciadoAntigo } = useParams<{ enunciadoAntigo: string }>()
+  const { questionId, quizId } = useParams();
 
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
@@ -27,12 +26,12 @@ const EditQuestionScreen: React.FC = () => {
 
   useEffect(() => {
     const fetchQuestion = async (): Promise<void> => {
-      if (currentUser && quizId && enunciadoAntigo) {
+      if (currentUser && quizId && questionId) {
         try {
           const pergunta = await getQuestionFromQuiz(
             currentUser.uid,
             quizId,
-            decodeURIComponent(enunciadoAntigo)
+            decodeURIComponent(questionId)
           )
 
           if (pergunta) {
@@ -58,7 +57,7 @@ const EditQuestionScreen: React.FC = () => {
     }
 
     fetchQuestion()
-  }, [currentUser, quizId, enunciadoAntigo])
+  }, [currentUser, quizId, questionId])
 
   const handleBack = (): void => {
     confirmAlert({
@@ -104,13 +103,13 @@ const EditQuestionScreen: React.FC = () => {
     }
 
     try {
-      if (currentUser && quizId && enunciadoAntigo) {
-        await editQuestionInQuiz(currentUser.uid, quizId, enunciadoAntigo, perguntaAtualizada)
+      if (currentUser && quizId && questionId) {
+        await editQuestionInQuiz(currentUser.uid, quizId, questionId, perguntaAtualizada)
         setNotification({ type: 'success', message: 'Pergunta editada com sucesso!' })
 
         setTimeout(() => setNotification(null), 3000)
 
-        setTimeout(() => navigate('/teacher-question'), 3000)
+        setTimeout(() => navigate(`/teacher-question/${quizId}`), 3000)
       }
     } catch (error) {
       console.error('Erro ao editar a pergunta:', error)
