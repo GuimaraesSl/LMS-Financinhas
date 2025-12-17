@@ -57,7 +57,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/teacher-question/:quizId" element={<TeacherQuestionCreationScreen />} />
 
           {/* Rota para a tela de adicionar nova pergunta */}
-          <Route path="/add-question/:quizId" element={<QuestionCreation />} />
+          <Route path="/question-creation/:quizId" element={<QuestionCreation />} />
         </Routes>
       </HashRouter>
     </AuthProvider>
