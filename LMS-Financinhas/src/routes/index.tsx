@@ -13,6 +13,7 @@ import ConfigTeam from '../pages/ConfigTeams/ConfigTeams'
 import MatchScreenWrapper from '../pages/MatchScreen/MatchScreenWrapper'
 import TeacherQuestionCreationScreen from '../pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
 import TeacherViewRanking from '../pages/TeacherViewRanking/TeacherViewRanking'
+import QuestionCreation from '../pages/AddQuestionScreen/QuestionCreation'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -35,7 +36,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/select-team/:roomCode" element={<SelectTeamScreen />} />
 
           {/* Rota para a tela editar pergunta */}
-          <Route path="/edit-question/:questionId" element={<EditQuestionScreen />} />
+          <Route path="/edit-question/:quizId/:questionId" element={<EditQuestionScreen />} />
 
           {/*Rota para tela de configuração do quiz*/}
           <Route path="/config/:quizId" element={<ConfigTeam />} />
@@ -54,6 +55,9 @@ const AppRoutes: React.FC = () => {
 
           {/* Rota para a tela de ver as perguntas */}
           <Route path="/teacher-question/:quizId" element={<TeacherQuestionCreationScreen />} />
+
+          {/* Rota para a tela de adicionar nova pergunta */}
+          <Route path="/question-creation/:quizId" element={<QuestionCreation />} />
         </Routes>
       </HashRouter>
     </AuthProvider>

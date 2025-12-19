@@ -1,40 +1,14 @@
-.notification {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-}
-
-.notification.success {
-  background-color: #28a745;
-}
-
-.notification.error {
-  background-color: #dc3545;
-}
-
-.containerEditQuestionScreen {
+.containerQuestionScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-image: url("../../assets/background.png");
-  min-height: 100vh; 
+  height: 100vh;
   width: 100vw;
   background-color: #ffffff;
   box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
 }
-
-.headerEditQuestionScreen { 
+.headerQuestionScreen { 
   margin-top: 40px;
   display: flex;
   justify-content: center;
@@ -42,8 +16,7 @@
   position: relative;
   width: 100%;
 }
-
-.headerEditQuestionScreen .arrowIcon {
+.headerQuestionScreen .arrowIcon {
   position: absolute;
   left: 70px;
   top: 10%;
@@ -51,17 +24,14 @@
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-
-.headerEditQuestionScreen .arrowIcon:hover {
+.headerQuestionScreen .arrowIcon:hover {
   transform: scale(1.2) translateY(-50%);
 }
-
-.logoEditQuestionScreen {
+.logoQuestionScreen {
   width: 350px;
   height: 71.89px;
 }
-
-.mainEditQuestionScreen {
+.mainQuestionScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,8 +39,7 @@
   flex: 1;
   width: 100%;
 }
-
-.titleEditQuestionScreen {
+.titleQuestionScreen {
   color: #000000;
   font-family: 'Fredoka';
   font-weight: 600;
@@ -78,36 +47,29 @@
   letter-spacing: 2px;
   text-align: center;
 }
-
-.formEditQuestionScreen {
+.formQuestionScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  width: min(1120px, 95%);
+  width: 1120px;
   max-width: 100%;
   background: transparent;
   border: none; 
   box-shadow: none;
   box-sizing: border-box;
-  margin: 0 auto;
-  padding: 16px;
 }
-
 .inputField {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 3px;
 }
-
 .inputField label {
   font-family: 'Fredoka';
   font-size: 20px;
   margin-bottom: 5px;
 }
-
 .textareaQuestion {
   width: 100%;
   height: 144px;
@@ -119,7 +81,6 @@
   resize: vertical;
   box-sizing: border-box;
 }
-
 .textareaJustification {
   width: 100%;
   height: 120px;
@@ -127,27 +88,22 @@
   font-family: 'Fredoka';
   font-size: 20px;
   border: 3px solid #000000;
-  background-color: #FFFFFF;
-  color: #000000;
   border-radius: 20px;
   resize: vertical;
   box-sizing: border-box;
 }
-
 .inputFieldsContainer {
   display: flex;
   justify-content: space-between;
   width: 100%;
   gap: 20px;
 }
-
 .buttonContainer {
   display: flex;
   justify-content: space-between;
   width: 100%;
   gap: 20px;
 }
-
 .buttonSave {
   padding: 10px 40px;
   margin-top: 20px;
@@ -165,11 +121,9 @@
   text-align: center;
   transition: transform 0.2s ease-in-out;
 }
-
 .buttonSave:hover {
   transform: scale(1.05);
 }
-
 .buttonCancel {
   padding: 10px 40px;
   margin-top: 20px;
@@ -187,15 +141,12 @@
   text-align: center;
   transition: transform 0.2s ease-in-out;
 }
-
 .buttonCancel:hover {
   transform: scale(1.05);
 }
-
 .buttonEditQuestionScreen:hover {
   transform: scale(1.05);
 }
-
 .linkEditQuestionScreen {
   color: #1D1D1D;
   font-size: 24px;
@@ -204,43 +155,36 @@
   cursor: pointer;
   font-weight: 600;
 }
-
 .linkEditQuestionScreen:hover {
   transform: scale(1.03);
 }
-
 .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
-
 .custom-ui {
   font-family: 'Fredoka', sans-serif;
   color: black;
   border-radius: 20px;
-  min-width: 620px;
-  min-height: 237px;
+  width: 620px;
+  height: 237px;
   border: 5px solid #000000;
   background: #fff;
   box-shadow: 10px 8px 0px rgba(0, 0, 0, 1);
   position: relative;
   text-align: center;
 }
-
 .custom-ui h1 {
   margin-top: 10px;
   font-weight: bold;
 }
-
 .custom-ui p {
   margin-bottom: 10px;
   font-size: 24px;
 }
-
 .custom-ui .buttonGroup {
   display: flex;
   justify-content: space-around;
 }
-
 .custom-ui .buttonGroup button {
   background-color: #FF4646;
   color: #570000;
@@ -251,14 +195,11 @@
   font-weight: bold;
   cursor: pointer;
   padding: 13px 20px;
-  margin: 24px;
   transition: transform 0.2s ease-in-out;
 }
-
 .custom-ui .buttonGroup button:hover {
   transform: scale(1.05);
 }
-
 .closeButton {
   position: absolute;
   color: #FF4646;
@@ -268,7 +209,6 @@
   border: none;
   cursor: pointer;
 }
-
 .closeButton:hover {
   transform: scale(1.03);
 }

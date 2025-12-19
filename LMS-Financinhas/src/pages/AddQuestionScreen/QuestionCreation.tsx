@@ -1,63 +1,26 @@
-import React, { useState, useEffect } from "react"
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import './EditQuestionScreen.style.css'
+import './QuestionCreation.style.css'
 import InputField from '../../components/InputField/InputField'
 import logo from '../../assets/Logo-Subtitle.svg'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { MdClose } from 'react-icons/md'
-import { getQuestionFromQuiz, editQuestionInQuiz } from '../../firebase/quiz/quiz'
-import { useAuth } from '../../contexts/authContext'
+import { addQuestionToQuiz } from '../../firebase/quiz/quiz'
 import { Pergunta } from '../../models/Pergunta'
+import { useAuth } from '../../contexts/authContext'
 
-const EditQuestionScreen: React.FC = () => {
+const QuestionCreation: React.FC = () => {
   const navigate = useNavigate()
-  const { currentUser } = useAuth()
+  const professorId = useAuth().userId
+  const quizId = useParams().quizId
 
-  const { questionId, quizId } = useParams();
-
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
-  const [wrongAnswer1, setWrongAnswer1] = useState('')
-  const [wrongAnswer2, setWrongAnswer2] = useState('')
-  const [wrongAnswer3, setWrongAnswer3] = useState('')
-  const [justification, setJustification] = useState('')
-  const [notification, setNotification] = useState<{ type: string; message: string } | null>(null)
-
-  useEffect(() => {
-    const fetchQuestion = async (): Promise<void> => {
-      if (currentUser && quizId && questionId) {
-        try {
-          const pergunta = await getQuestionFromQuiz(
-            currentUser.uid,
-            quizId,
-            decodeURIComponent(questionId)
-          )
-
-          if (pergunta) {
-            const correctIndex = pergunta.alternativas.findIndex((alt) => alt === pergunta.correta)
-            if (correctIndex !== -1) {
-              setQuestion(pergunta.enunciado)
-              setAnswer(pergunta.correta)
-
-              const wrongAlternatives = pergunta.alternativas.filter(
-                (_, index) => index !== correctIndex
-              )
-              setWrongAnswer1(wrongAlternatives[0] || '')
-              setWrongAnswer2(wrongAlternatives[1] || '')
-              setWrongAnswer3(wrongAlternatives[2] || '')
-
-              setJustification(pergunta.justificativa)
-            }
-          }
-        } catch (error) {
-          console.error('Erro ao buscar a pergunta:', error)
-        }
-      }
-    }
-
-    fetchQuestion()
-  }, [currentUser, quizId, questionId])
+  const [question, setQuestion] = React.useState('')
+  const [answer, setAnswer] = React.useState('')
+  const [wrongAnswer1, setWrongAnswer1] = React.useState('')
+  const [wrongAnswer2, setWrongAnswer2] = React.useState('')
+  const [wrongAnswer3, setWrongAnswer3] = React.useState('')
+  const [justification, setJustification] = React.useState('')
 
   const handleBack = (): void => {
     confirmAlert({
@@ -75,7 +38,7 @@ const EditQuestionScreen: React.FC = () => {
           <div className="buttonGroup">
             <button
               onClick={() => {
-                navigate(-1)
+                navigate(`/teacher-question/${quizId}`)
                 onClose()
               }}
             >
@@ -86,52 +49,43 @@ const EditQuestionScreen: React.FC = () => {
       )
     })
   }
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
+    if (!quizId) {
+      alert('ID do quiz não encontrado!')
+      return
+    }
 
     if (!question || !answer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3 || !justification) {
       alert('Por favor, preencha todos os campos!')
       return
     }
 
-    const perguntaAtualizada: Pergunta = {
+    const novaPergunta: Pergunta = {
+      id: `${Date.now()}`, // Gerar um ID único para a pergunta
       enunciado: question,
+      alternativas: [answer, wrongAnswer1, wrongAnswer2, wrongAnswer3],
       correta: answer,
-      alternativas: [wrongAnswer1, wrongAnswer2, wrongAnswer3, answer],
       justificativa: justification
     }
 
     try {
-      if (currentUser && quizId && questionId) {
-        await editQuestionInQuiz(currentUser.uid, quizId, questionId, perguntaAtualizada)
-        setNotification({ type: 'success', message: 'Pergunta editada com sucesso!' })
-
-        setTimeout(() => setNotification(null), 2000)
-
-        setTimeout(() => navigate(`/teacher-question/${quizId}`), 1500)
-      }
+      await addQuestionToQuiz(professorId!, quizId!, novaPergunta)
+      alert('Pergunta criada com sucesso!')
+      navigate(`/teacher-question/${quizId}`)
     } catch (error) {
-      console.error('Erro ao editar a pergunta:', error)
-      setNotification({ type: 'error', message: 'Ocorreu um erro ao editar a pergunta.' })
-
-      setTimeout(() => setNotification(null), 3000)
+      console.error('Erro ao criar pergunta:', error)
+      alert('Não foi possível criar a pergunta.')
     }
   }
-
   return (
-    <div className="containerEditQuestionScreen">
-
-      {notification && (
-        <div className={`notification ${notification.type}`}>{notification.message}</div>
-      )}
-
-      <header className="headerEditQuestionScreen">
-        <img src={logo} className="logoEditQuestionScreen" alt="Logo Financinhas" />
+    <div className="containerQuestionScreen">
+      <header className="headerQuestionScreen">
+        <img src={logo} className="logoQuestionScreen" alt="Logo Financinhas" />
       </header>
-      <main className="mainEditQuestionScreen">
-        <h1 className="titleEditQuestionScreen">EDITAR PERGUNTA</h1>
-        <form className="formEditQuestionScreen" onSubmit={handleSubmit}>
+      <main className="mainQuestionScreen">
+        <h1 className="titleQuestionScreen">ADICIONAR PERGUNTA</h1>
+        <form className="formQuestionScreen" onSubmit={handleSubmit}>
           <div className="inputField">
             <InputField
               id="question"
@@ -139,10 +93,7 @@ const EditQuestionScreen: React.FC = () => {
               label="Pergunta"
               type="text"
               value={question}
-              onChange={(e) => {
-                setQuestion(e.target.value)
-              }
-              }
+              onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
           <div className="inputFieldsContainer">
@@ -192,11 +143,11 @@ const EditQuestionScreen: React.FC = () => {
             />
           </div>
           <div className="buttonContainer">
-            <button className="buttonCancel" type="button" onClick={handleBack}>
-              CANCELAR E VOLTAR
-            </button>
             <button className="buttonSave" type="submit">
               SALVAR EDIÇÃO
+            </button>
+            <button className="buttonCancel" type="button" onClick={handleBack}>
+              CANCELAR E VOLTAR
             </button>
           </div>
         </form>
@@ -204,5 +155,4 @@ const EditQuestionScreen: React.FC = () => {
     </div>
   )
 }
-
-export default EditQuestionScreen
+export default QuestionCreation
