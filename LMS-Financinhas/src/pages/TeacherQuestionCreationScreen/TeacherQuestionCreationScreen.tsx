@@ -101,6 +101,7 @@ const TeacherQuestionCreationScreen: React.FC = () => {
                     justificativa
                   }}
                   onDelete={() => handleDeleteQuestion(pergunta.enunciado)}
+                  quizId={quizId}
                 />
               )
             })
