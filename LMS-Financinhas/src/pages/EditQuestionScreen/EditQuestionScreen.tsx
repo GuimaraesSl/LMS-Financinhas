@@ -107,9 +107,9 @@ const EditQuestionScreen: React.FC = () => {
         await editQuestionInQuiz(currentUser.uid, quizId, questionId, perguntaAtualizada)
         setNotification({ type: 'success', message: 'Pergunta editada com sucesso!' })
 
-        setTimeout(() => setNotification(null), 3000)
+        setTimeout(() => setNotification(null), 2000)
 
-        setTimeout(() => navigate(`/teacher-question/${quizId}`), 3000)
+        setTimeout(() => navigate(`/teacher-question/${quizId}`), 1500)
       }
     } catch (error) {
       console.error('Erro ao editar a pergunta:', error)
